@@ -1,0 +1,25 @@
+Method 01:Method 01:
+
+
+class GfG
+{
+    public boolean checkMirror(Node root1,Node root2){
+        if(root1==null&&root2==null) return true;
+        if((root1==null&&root2!=null)||(root1!=null&&root2==null)) return false;
+        if(root1.data!=root2.data) return false;
+    boolean op1=checkMirror(root1.left, root2.right);
+    boolean op2=checkMirror(root1.right, root2.left);
+    return op1&&op2;
+    }
+    // return true/false denoting whether the tree is Symmetric or not
+    public boolean isSymmetric(Node root)
+    {
+        // add your code here;
+        if(root==null){
+            return true;
+        }
+        
+        return checkMirror(root.left, root.right);
+    }
+    
+}
