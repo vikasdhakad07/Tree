@@ -1,0 +1,30 @@
+Method 01:Check for Balanced Tree
+
+
+class Tree
+{
+    
+    //Function to check whether a binary tree is balanced or not.
+    boolean result=true;
+    boolean isBalanced(Node root)
+    {
+	// Your code here
+	height(root);
+	return result;
+    }
+    
+    private int height(Node root){
+        if(root==null){
+        return 0;
+        }
+        
+        int op1=height(root.left);
+        int op2=height(root.right);
+        int gap=Math.abs(op1-op2);
+        if(gap>1){
+            result=false;
+        }
+        return 1+Math.max(op1,op2);
+    }
+}
+
