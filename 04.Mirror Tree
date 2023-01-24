@@ -1,0 +1,23 @@
+Method 01:Mirror Tree
+
+
+class Solution {
+    // Function to convert a binary tree into its mirror tree.
+    void mirror(Node root) {
+        // Your code here
+        
+        if(root==null){
+            return;
+        }
+        
+        Node temp=null;
+        if(root.left!=null||root.right!=null){
+            temp=root.left;
+            root.left=root.right;
+            root.right=temp;
+        }
+        
+        mirror(root.left);
+        mirror(root.right);
+    }
+}
