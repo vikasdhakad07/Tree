@@ -1,0 +1,24 @@
+Method 01:Right View of Binary Tree
+
+
+class Solution{
+    public static void view(Node node, ArrayList<Integer> al, int index){
+        if(node==null){
+            return;
+        }
+        
+        if(index==al.size()){
+            al.add(node.data);
+        }
+        view(node.right, al, index+1);
+        view(node.left, al, index+1);
+    }
+    //Function to return list containing elements of right view of binary tree.
+    ArrayList<Integer> rightView(Node node) {
+        //add code here.
+        ArrayList<Integer> al=new ArrayList<>();
+        view(node, al, 0);
+        return al;
+    }
+}
+
