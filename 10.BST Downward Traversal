@@ -1,0 +1,35 @@
+Method 01:BST Downward Traversal
+
+
+class Solution
+{
+    
+    Node findAns(Node root, int target){
+        if(root==null) return null;
+        if(root.data==target)
+            return root;
+        if(root.data>target)
+            return findAns(root.left, target);
+        if(root.data<target);
+          return findAns(root.right, target);
+    }
+    
+    long verticallyfind(Node root, int position){
+        if(root==null) return 0;
+        long left=verticallyfind(root.left, position+1);
+        long right=verticallyfind(root.right, position-1);
+        
+        return (position==0?root.data:0)+left+right;
+    }
+    
+    
+    long verticallyDownBST(Node root,int target)
+    {
+        Node result=findAns(root, target);
+        if(result==null){
+            return -1;
+        }
+        return verticallyfind(result, 0)-result.data;
+    
+}
+}
