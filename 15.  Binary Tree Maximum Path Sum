@@ -1,0 +1,30 @@
+Method 01:  Binary Tree Maximum Path Sum
+
+
+class Solution
+{
+    //Function to return maximum path sum from any node in a tree.
+     int sum=Integer.MIN_VALUE;
+    int helper(Node root){
+       if(root==null){
+           return 0;
+       }
+       int h1=helper(root.left);
+       int h2=helper(root.right);
+       sum=Math.max(sum,h1+h2+root.data);
+       if(h1+h2+root.data<=0){
+           return 0;
+       }
+       return Math.max(h1,h2)+root.data;
+    }
+    int findMaxSum(Node node)
+    {
+        //your code goes here
+         if(node==null){
+            return 0;
+        }
+       
+        helper(node);
+        return sum;
+    }
+}
