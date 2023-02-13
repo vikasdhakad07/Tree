@@ -18,3 +18,27 @@ public void preorder(TreeNode root, List<Integer> li){
         preorder(root.right, li);
 }
 }
+
+
+Method 02: Binary Tree Preorder Traversal
+
+
+ List<Integer> preorder=new ArrayList<>();
+        if(root==null){
+            return preorder;
+        }
+        Stack<TreeNode> st=new Stack<>();
+        st.push(root);
+        while(!st.isEmpty()){
+            root=st.pop();
+            preorder.add(root.val);
+        
+            if(root.right!=null){
+                st.push(root.right);
+            }
+
+              if(root.left!=null){
+                st.push(root.left);
+            }
+        }
+        return preorder;
