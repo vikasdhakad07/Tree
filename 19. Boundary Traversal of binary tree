@@ -1,0 +1,87 @@
+Method 01: Boundary Traversal of binary tree
+
+
+class Solution
+{
+     boolean isLeaf(Node root){
+
+        return root.left==null && root.right==null;
+
+    }
+
+    public void addLeftBoundary(Node root,ArrayList<Integer> ans){
+
+        Node x=root.left;
+
+        while(x!=null){
+
+            if(isLeaf(x)==false) ans.add(x.data);
+
+            if(x.left!=null) x=x.left;
+
+            else{
+
+                x=x.right;
+
+            }
+
+        }
+
+    }
+
+    public void addRightBoundary(Node root,ArrayList<Integer> answer){
+
+        Node x=root.right;
+
+        ArrayList<Integer> ans=new ArrayList<>();
+
+        while(x!=null){
+
+            
+
+            if(isLeaf(x)==false) ans.add(x.data);
+
+            if(x.right!=null) x=x.right;
+
+            else x=x.left;
+
+    }
+
+    for(int i=ans.size()-1;i>=0;i--){
+
+        answer.add(ans.get(i));
+
+    }
+
+    }
+
+    void addLeafNode(Node root,ArrayList<Integer> ans){
+
+        if(isLeaf(root)){
+
+            ans.add(root.data);
+
+            return;
+
+        }
+
+        if(root.left!=null) addLeafNode(root.left,ans);
+
+        if(root.right!=null) addLeafNode(root.right,ans);
+
+    }
+	ArrayList <Integer> boundary(Node node)
+	{
+	      ArrayList<Integer> ans=new ArrayList<>();
+
+     if(isLeaf(node)==false) ans.add(node.data);
+
+     addLeftBoundary(node,ans);
+
+     addLeafNode(node,ans);
+
+     addRightBoundary(node,ans);
+
+     return ans;
+	}
+}
