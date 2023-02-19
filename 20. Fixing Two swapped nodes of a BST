@@ -1,0 +1,30 @@
+Method 01: Fixing Two swapped nodes of a BST
+
+
+class Solution {
+    Node prev1=null, prev2=null;
+    public Node correctBST(Node root) {
+        // code here.
+        inorder(root);
+      int temp=prev1.data;
+      prev1.data=prev2.data;
+      prev2.data=temp;
+      return root;
+    }
+     Node prev=null;
+    public void inorder(Node root){
+        if(root==null){
+            return;
+        }
+        inorder(root.left);
+        if(prev!=null){
+        if(prev.data>root.data){
+            if(prev1==null)
+                prev1=prev;
+                prev2=root;
+        }
+        }
+     prev=root;
+     inorder(root.right);
+    }
+}
