@@ -1,0 +1,28 @@
+Method 01:Root to Leaf Paths
+
+
+class Tree{
+    public void func(Node root, ArrayList<ArrayList<Integer>> ans, ArrayList<Integer> list){
+        if(root==null){
+            return;
+        }
+        
+        list.add(root.data);
+        if(root.left==null&&root.right==null){
+            ans.add(new ArrayList<>(list));
+            list.remove(list.size()-1);
+            return;
+        }
+        
+        func(root.left, ans, list);
+        func(root.right, ans, list);
+        list.remove(list.size()-1);
+    }
+    public ArrayList<ArrayList<Integer>> Paths(Node root){
+        // Code here
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        func(root, ans, new ArrayList<>());
+        return ans;
+    }
+    
+}
