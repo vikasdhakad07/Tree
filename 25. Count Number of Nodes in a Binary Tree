@@ -1,0 +1,21 @@
+Method 01: Count Number of Nodes in a Binary Tree
+
+
+class Solution {
+    public static void postorder(Node root, ArrayList<Node> al){
+        if(root==null){
+            return;
+        }
+        
+        postorder(root.left, al);
+        postorder(root.right, al);
+        al.add(root);
+    }
+
+    public static int countNodes(Node root) {
+        // Code here
+        ArrayList<Node> al =new ArrayList<>();
+        postorder(root, al);
+        return al.size();
+    }
+}
