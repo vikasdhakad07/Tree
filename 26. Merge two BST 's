@@ -1,0 +1,43 @@
+Method 01: Merge two BST 's
+
+
+class Solution
+{
+    //Function to return a list of integers denoting the node 
+    //values of both the BST in a sorted order.
+    
+    public static void oneBst(Node root1, List<Integer> li1){
+        if(root1==null){
+            return;
+        }
+        oneBst(root1.left, li1);
+        li1.add(root1.data);
+        oneBst(root1.right, li1);
+     
+    }
+    
+    
+    public static void twoBst(Node root2, List<Integer> li2){
+        if(root2==null){
+            return;
+        }
+        twoBst(root2.left, li2);
+        li2.add(root2.data);
+        twoBst(root2.right, li2);
+      
+    }
+    
+    
+    public List<Integer> merge(Node root1,Node root2)
+    {
+        // Write your code here
+        List<Integer> li1=new ArrayList<Integer>();
+        List<Integer> li2=new ArrayList<Integer>();
+        
+        oneBst(root1, li1);
+        twoBst(root2, li2);
+        li1.addAll(li2);
+        Collections.sort(li1);
+        return li1;
+    }
+}
