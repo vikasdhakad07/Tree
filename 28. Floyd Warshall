@@ -1,0 +1,21 @@
+Method 01: Floyd Warshall
+
+
+class Solution
+{
+    public void shortest_distance(int[][] cost)
+    {
+        // Code here 
+        int n=cost.length;
+        for(int k=0;k<n;k++){
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(cost[i][k]!=-1 && cost[k][j]!=-1){
+                    if(cost[i][j]==-1) cost[i][j]=cost[i][k]+cost[k][j];
+                    else cost[i][j]=Math.min(cost[i][j],cost[i][k]+cost[k][j]);
+                }
+            }
+        }
+    }
+    }
+}
