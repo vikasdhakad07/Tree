@@ -1,0 +1,27 @@
+Method 01:Sum of nodes on the longest path from root to leaf node
+
+
+class Solution{
+    public int sumOfLongRootToLeafPath(Node root)
+    {
+        //code here
+        if(root==null){
+            return 0;
+        }
+        
+        if(isHeight(root.left)>isHeight(root.right)){
+            return root.data+sumOfLongRootToLeafPath(root.left);
+        }
+        else{
+            return root.data+sumOfLongRootToLeafPath(root.right);
+        }
+    }
+    
+    public int isHeight(Node root){
+        if(root==null){
+            return 0;
+        }
+        
+        return 1+Math.max(isHeight(root.left),isHeight(root.right));
+    }
+}
