@@ -1,0 +1,25 @@
+Method 01: Root to leaf paths sum
+
+
+class Tree1
+{
+	public static long treePathsSum(Node root)
+        {
+         //add code here.
+         long sum=0;
+         return dfssum(root,sum);
+	}
+	
+	public static long dfssum(Node root,long sum){
+	    if(root==null){
+	        return 0;
+	    }
+	    
+	    sum=sum*10+root.data;
+	    if(root.left==null&&root.right==null){
+	        return sum;
+	    }
+	    
+	    return dfssum(root.left,sum)+dfssum(root.right,sum);
+	}
+}
