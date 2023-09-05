@@ -1,0 +1,27 @@
+Method 01: Leaf at same level
+
+
+class Solution
+{
+    boolean check(Node root)
+    {
+	// Your code here
+	HashSet<Integer> hs=new HashSet<>();
+	solve(root,0,hs);
+	if(hs.size()==1)
+	    return true;
+	return false;
+    }
+    
+    void solve(Node root,int level,HashSet<Integer> hs){
+        if(root==null){
+            return;
+        }
+        if(root.left==null&&root.right==null){
+            hs.add(level);
+            return;
+        }
+        solve(root.left,level+1,hs);
+        solve(root.right,level+1,hs);
+    }
+}
