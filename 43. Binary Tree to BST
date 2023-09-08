@@ -1,0 +1,31 @@
+Method 01: Binary Tree to BST
+
+
+class Solution
+{
+    // The given root is the root of the Binary Tree
+    // Return the root of the generated BST
+    Node binaryTreeToBST(Node root)
+    {
+       // Your code here
+       Node rt=null;
+       ArrayList<Integer> al=new ArrayList<>();
+       inorder(root,al);
+       Collections.sort(al);
+       for(Integer i:al){
+           System.out.print(i+" ");
+       }
+       return rt;
+    }
+    
+    public void inorder(Node root,ArrayList<Integer> al){
+        if(root==null){
+            return;
+        }
+        
+        al.add(root.data);
+        inorder(root.left,al);
+        inorder(root.right,al);
+    }
+}
+ 
