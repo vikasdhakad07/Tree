@@ -1,0 +1,30 @@
+Method 01: Duplicate subtree in Binary Tree
+
+
+class Solution {
+    int dupSub(Node root) {
+        // code here 
+        String str="";
+        HashSet<String> set=new HashSet<>();
+        boolean fl[]=new boolean[1];
+        helper(root,set,fl);
+        return fl[0]==true?1:0;
+    }
+    
+String helper(Node root,HashSet<String> set,boolean fl[]){
+    if(root==null) return "$";
+    String str="";
+    str+=helper(root.left,set,fl)+"-";
+    str+=root.data+"-";
+    str+=helper(root.right,set,fl);
+    if(!set.contains(str)){
+        set.add(str);
+    }
+    else{
+        if(str.length()>11){
+            fl[0]=true;
+        }
+    }
+    return str;
+}
+}
