@@ -1,0 +1,38 @@
+Method 01: Find Common Nodes in two BSTs
+
+
+class Solution
+{
+    //Function to find the nodes that are common in both BST.
+	public static ArrayList<Integer> findCommon(Node root1,Node root2)
+    {
+        //code here
+        ArrayList<Integer> list=new ArrayList<>();
+        Set<Integer> set=new HashSet<>();
+        inorder(root1,set);
+        inorder(root2,set,list);
+        return list;
+    }
+    
+    public static void inorder(Node root,Set<Integer> set){
+        if(root==null){
+            return;
+        }
+        
+        inorder(root.left,set);
+        set.add(root.data);
+        inorder(root.right,set);
+    }
+    
+    public static void inorder(Node root,Set<Integer> set,ArrayList<Integer> al){
+        if(root==null){
+            return;
+        }
+        
+        inorder(root.left,set,al);
+        if(set.contains(root.data)){
+            al.add(root.data);
+        }
+        inorder(root.right,set,al);
+    }
+}
