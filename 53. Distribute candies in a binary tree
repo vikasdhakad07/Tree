@@ -1,0 +1,28 @@
+Method 01: Distribute candies in a binary tree
+
+
+
+class Solution
+{
+    static int totalMoves;
+    public static int distributeCandy(Node root)
+    {
+        //code here
+        totalMoves=0;
+        distribute(root);
+        return totalMoves;
+    }
+    
+    public static int distribute(Node root){
+        if(root==null){
+            return 0;
+        }
+        
+        int left=distribute(root.left);
+        int right=distribute(root.right);
+        
+        totalMoves+=Math.abs(left)+Math.abs(right);
+        
+        return root.data-1+left+right;
+    }
+}
